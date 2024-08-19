@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-a7+6a51+#5h#x511m^x#6qe+afd-yrfu86&nwx)q60t+7f%1a6
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+CSRF_TRUSTED_ORIGINS = ['https://smart-care-hmba.onrender.com', 'https://*.127.0.0.1']
 
 # Application definition
 
