@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets,filters,pagination
 from . models import Doctor,Specialization,Designation,AvailableTime,Review
 from . serializers import AvailableTimeSerializer,SpecializationSerializer,DesignationSerializer,DoctorSerializer,ReviewSerializer
@@ -20,6 +21,9 @@ class DoctorViewset(viewsets.ModelViewSet):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
     pagination_class = DoctorPagination
+    # filter_backends = [DjangoFilterBackend]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['user__first_name', 'user__email', 'designation__name', 'specialization__name']
 
 class AvailableTimeViewset(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
